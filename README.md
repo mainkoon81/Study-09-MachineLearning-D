@@ -58,7 +58,9 @@ This loss function checks to see if our model has done a good job with classifyi
 
 In this example, our model is pretty sure that the digit is an '8', but the label knows for certain it's a '3' thus, will return a higher value for the loss. If the model later returns the next output where it changes to being 90% sure thata the image depicts a '3' the loss value will be lower. To sum, if the model predictions **agree** with the labels, the loss is **lower**.
 
-We want its predictions to agree with the labels. We'll try to find the **model parameters** that gives us predictions that minimizing the loss function. And the standard method for descending a loss function is called **Gradient Descent**.  
+We want its predictions to agree with the labels. We'll try to find the **model parameters** that gives us predictions that minimizing the loss function. And the standard method for descending a loss function is called **Gradient Descent**. There are lots of ways to perform Gradient Descent and each method in Keras has a corresponding optimizer. The surface depicted here is an example of a loss function and all of the optimizers are racing towards the minimum of the function, and some are better than others.  
+<img src="https://user-images.githubusercontent.com/31917400/42951046-3e05cb5e-8b6d-11e8-88b4-ab75663259f1.jpg" />
+
  
 
 
