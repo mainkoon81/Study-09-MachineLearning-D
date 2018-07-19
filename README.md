@@ -62,7 +62,7 @@ We want its predictions to agree with the labels. We'll try to find the **model 
 <img src="https://user-images.githubusercontent.com/31917400/42951046-3e05cb5e-8b6d-11e8-88b4-ab75663259f1.jpg" />
 
 ### Compiling_Step
- - we'll specify the 'loss', 'optimizer', and 'metrics'. 
+ - we'll specify the **'loss', 'optimizer', and 'metrics'**. 
 > For loss function...
 > - 'mean_squared_error' (y_true, y_pred)
 > - 'binary_crossentropy' (y_true, y_pred)
@@ -79,8 +79,14 @@ We want its predictions to agree with the labels. We'll try to find the **model 
 > - 'tfoptimizer' : TFOptimizer
 
 ### Training_Step
- - model_validation: 
+<img src="https://user-images.githubusercontent.com/31917400/42966788-21303aea-8b96-11e8-89e3-5c76c967093b.jpg" />
 
+To understand the modification of training code, we'll first need to understand the idea of 'model validation'. So far, we've checked model performance based on how the loss in accuracy changed with epoch. When we design our model, it's not always clear **how many layers** the network should have or **how many nodes** to place in each layer or **how many epochs and what batch_size** should we use. So we break our dataset into three set: train + validation + test. Our model looks only at the training set when deciding how to modify its weights. And every epoch, the model checks how it's doing by checking its accuracy on the validation set (but it does not use any part of the validation set for the backpropagation step). We use the training set to find all the patterns we can, and the validation set tells us if our chosen model is performing well. Since our model does not use the validation set for deciding the weights, it can tell us if we're overfitting to the training set. For example, around certain epoch, we can get some evidence of overfitting where the **training loss** starts to decrease but the **validation loss** starts to increase. Then we will want to keep the weights around the epoch and discard the weights from the later epochs. This kind of process can prove useful if we have multiple potential architectures to choose from. 
+<img src="https://user-images.githubusercontent.com/31917400/42973257-763a471a-8baa-11e8-8c79-622c6c6bea4c.jpg" />
+
+ - How many layers? nodes? epochs?: we save the weights from each potential architecture for later comparison. Then we will always pick the model that gets the lowest validation loss. 
+ - but why we create the test set?: When we go to test the model, it looks at data that it has truly never seen before. Eventhough the model doesn't use the validation set to update its weights, our model selection process can be biased in favor of the validation set. 
+ - Notice the `fit()` takes `validation_split` argument. `ModelCheckpoint()` class allows us to save the model weights after each epoch. `save_best_only` parameter says that save the weights to get the best accuracy on the validation set.     
 
 
 
