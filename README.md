@@ -4,13 +4,13 @@ DeepLearning (CNN, RNN)
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 # CNN
-## Applications ?
+#### Applications ?
  - ComputerVision
  - NaturalLanguageProcessing (WaveNet-model)
  - Let SelfDrivingCars read Road Signs
  - limitless....
 
-## MNIST database
+### MNIST database
 As arguably the most famous database in the field of deep learning, it contains 70,000 images of hand-written digits(0-9).
 ```
 from keras.datasets import mnist
