@@ -19,15 +19,16 @@ from keras.datasets import mnist
 Sometimes some digits are less legible than others. How to conquer these difficulty? How our algorithm examine the images and discover patterns? These pattern can then be used to decipher the digits in images that it hasn't seen before. Let's see how computer sees when we input these images.  
 <img src="https://user-images.githubusercontent.com/31917400/42932985-9d125f86-8b3b-11e8-976e-dfda4faeba7e.jpg" />
 
-## X
+## 1. [MLP]
+### X
 For computer, an image is a matrix with one entry for each image pixel. Each image in MNIST database is **28 x 28**(pixel). White pixels are encoded as **255**, black pixels are encoded as **0**, and grey pixels appear in the matrix as an integer somewhere in between. We rescale each image to have values in the range from 0 to 1.   
 <img src="https://user-images.githubusercontent.com/31917400/42933905-d9982a42-8b3d-11e8-9674-792685ddb6aa.jpg" />
 
-## y
+### y
 Before supplying the data to our deeplearning network, we'll need to preprocess the **labels**(y_train, y_test) because each image currently has a label that's integer-valued. So we convert this to an one-hot encoding. Each label will be transformed to a vector with mostly 0. 
 <img src="https://user-images.githubusercontent.com/31917400/42939141-947659a2-8b4c-11e8-9d2e-91606b40d004.jpg" />
 
-## X again?
+### X again?
 However, recall that our MLP only takes **vectors** as input. So if we want to use MLP with images, we have to first convert all of our matirces to vectors. For example, in the case of a 28 x 28 image, we can get a vector with 784 entries. This is called **flattening**. After encoding our images as vectors, they can be fed into the input layer of our MLP.  
 <img src="https://user-images.githubusercontent.com/31917400/42935288-2cb6273a-8b41-11e8-9b6c-1e203d957233.jpg" />
 
@@ -88,7 +89,8 @@ To understand the modification of training code, we'll first need to understand 
  - **but why we create the test set?**: When we go to test the model, it looks at data that it has truly never seen before. Eventhough the model doesn't use the validation set to update its weights, our model selection process can be biased in favor of the validation set. 
  - Notice the `fit()` takes `validation_split` argument. `ModelCheckpoint()` class allows us to save the model weights after each epoch. `save_best_only` parameter says that save the weights to get the best accuracy on the validation set.     
 
-
+## 2. [CNN]
+<img src="https://user-images.githubusercontent.com/31917400/42973712-1fe68142-8bac-11e8-8e0e-c94178e64919.jpg" />
 
 
 
