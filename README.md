@@ -10,7 +10,7 @@ DeepLearning (CNN, RNN)
  - Let SelfDrivingCars read Road Signs
  - limitless....
 
-### MNIST database
+### Introduction with MNIST database
 As arguably the most famous database in the field of deep learning, it contains 70,000 images of hand-written digits(0-9).
 ```
 from keras.datasets import mnist
@@ -61,7 +61,8 @@ In this example, our model is pretty sure that the digit is an '8', but the labe
 We want its predictions to agree with the labels. We'll try to find the **model parameters** that gives us predictions that minimizing the loss function. And the standard method for descending a loss function is called **Gradient Descent**. There are lots of ways to perform Gradient Descent and **each method** in Keras has a corresponding **optimizer**. The surface depicted here is an example of a loss function and all of the optimizers are racing towards the minimum of the function, and some are better than others.  
 <img src="https://user-images.githubusercontent.com/31917400/42951046-3e05cb5e-8b6d-11e8-88b4-ab75663259f1.jpg" />
 
-When we compile the function, we'll specify the 'loss', 'optimizer', and 'metrics'. 
+### Compiling_Step
+ - we'll specify the 'loss', 'optimizer', and 'metrics'. 
 > For loss function...
 > - 'mean_squared_error' (y_true, y_pred)
 > - 'binary_crossentropy' (y_true, y_pred)
@@ -77,7 +78,8 @@ When we compile the function, we'll specify the 'loss', 'optimizer', and 'metric
 > - 'nadam' : Nesterov Adam optimizer
 > - 'tfoptimizer' : TFOptimizer
 
-### Validation
+### Training_Step
+ - model_validation: 
 
 
 
