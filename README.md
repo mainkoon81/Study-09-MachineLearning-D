@@ -36,10 +36,11 @@ How to create our MLP for discovering the patterns in our data? Let's say...
  - Let's say -> the 2 hidden layers each containing 572 nodes
  - The model needs to distinguish 10 different digits -> the output layer with 10 nodes, activation='softmax' 
    - the softmax activation function ensures that our network outputs an estimate for the probability that each potential digit is depicted in the image. 
- 
+
 Here, we just add the 'flatten layer' before we specify our MLP. It takes the image matrix's input and convert it to a **vector**.  
 <img src="https://user-images.githubusercontent.com/31917400/42940231-9b24ec88-8b50-11e8-8d2e-4beafbee2351.jpg" />
 
+### Note
 This model is great as a first draft, but we can make it better.
  - To life model accuracy:
    - add **'relu'** activation function to all of our hidden layers. 'relu' helps with the **vanishing gradients** problem.
