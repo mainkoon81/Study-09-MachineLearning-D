@@ -40,6 +40,13 @@ How to create our MLP for discovering the patterns in our data? Let's say...
 Here, we just add the 'flatten layer' before we specify our MLP. It takes the image matrix's input and convert it to a **vector**.  
 <img src="https://user-images.githubusercontent.com/31917400/42940231-9b24ec88-8b50-11e8-8d2e-4beafbee2351.jpg" />
 
+This model is great as a first draft, but we can make it better.
+ - To life model accuracy:
+   - add **'relu'** activation function to all of our hidden layers. 'relu' helps with the **vanishing gradients** problem.
+ - To minimize overfitting:
+   - add **dropout layer**. This layer must be supplied a parameter(from 0 to 1) which is a probability that any node in the network is dropped during training.  
+<img src="https://user-images.githubusercontent.com/31917400/42946281-6a7bd846-8b62-11e8-919e-a7794c06818b.jpg" />
+ 
 
 
 
