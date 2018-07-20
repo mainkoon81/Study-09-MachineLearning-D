@@ -96,6 +96,16 @@ To understand the modification of training code, we'll first need to understand 
 ## 2. [CNN]
 <img src="https://user-images.githubusercontent.com/31917400/42973712-1fe68142-8bac-11e8-8e0e-c94178e64919.jpg" />
 
+What's the convolutional layer?
+<img src="https://user-images.githubusercontent.com/31917400/43023382-973db9e8-8c62-11e8-8557-aff4c924ce0d.jpg" />
+
+ - Break the image up into smaller pieces.
+   - first select a width and height defining a convolution window
+   - then simply slide this window horizontally, vertically over the matrix of the pixels
+   - At each position, the window specifies a small piece within the image, and define a collection of pixels to which we connect a single hidden node.
+
+In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?   
+
 
 
 
