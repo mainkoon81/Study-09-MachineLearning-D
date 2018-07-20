@@ -105,7 +105,8 @@ What's the convolutional layer?
    - At each position, the window specifies a small piece within the image, and define a collection of pixels to which we connect a single hidden node.
 
 In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?   
-
+ - We could represent the weights connecting the nodes by writing a numerical value on top of the arrows. 
+ - Then in order to get the value of a node in the convolutional layer for this image input we operate as we did with MLP with multiplying the input nodes by their corresponding weights and summing up the result. When we do that, we get zero just as with 
 
 
 
