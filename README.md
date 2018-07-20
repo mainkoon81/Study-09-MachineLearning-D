@@ -88,7 +88,10 @@ To understand the modification of training code, we'll first need to understand 
  - **How many layers? nodes? epochs? batch_size?**: we save the weights from each potential architecture for later comparison. Then we will always pick the model that gets the lowest validation loss. 
  - **but why we create the test set?**: When we go to test the model, it looks at data that it has truly never seen before. Eventhough the model doesn't use the validation set to update its weights, our model selection process can be biased in favor of the validation set. 
  - Notice the `fit()` takes `validation_split` argument. `ModelCheckpoint()` class allows us to save the model weights after each epoch. `save_best_only` parameter says that save the weights to get the best accuracy on the validation set. 
-### But in the case of real-world messy image data(random size, shape..), do you think MLP works? Nope!
+### But in the case of real-world messy image data(random size, complex shapes, patterns..), do you think MLP works? Nope!
+   - MLP only use fully connected layers...it uses too many parameters..a risk of **overfitting**
+   - MLP only accepts vectors as input
+<img src="https://user-images.githubusercontent.com/31917400/43022609-b6e8521a-8c5f-11e8-879f-7ed4a048a99b.jpg" />
 
 ## 2. [CNN]
 <img src="https://user-images.githubusercontent.com/31917400/42973712-1fe68142-8bac-11e8-8e0e-c94178e64919.jpg" />
