@@ -122,7 +122,13 @@ Q. How to perform a convolution on a color images?
  - If we want to picture the case of a color image with multiple filters, we would define multiple 3d arrays (each as a stack of 2d arrays) as our **filters**. Then we can think about each of the **feature maps** in a convolutional layer along the same lines as an image channel and stack them to get a 3d array. Then, we can use this 3d array as input to still another convolutional layer to discover patterns within the patterns that we discovered in the first convolutional layer. We can then do this again to discover patterns within patterns within patterns....
 <img src="https://user-images.githubusercontent.com/31917400/43036346-0cb4d11c-8cf8-11e8-8f16-ed1c9cbe2d0f.jpg" />
 
-
+Both in MPL, CNN, the inference works the same way (weights, biases, loss, etc...), but 
+ - In MLP, **Dense layers** are fully connected, meaning that the nodes are connected to every node in the previous layer.
+ - Convolutional layers 
+   - are locally connected where their nodes are connected to only a subset of previous layer's nodes.
+   - have this added parameter sharing.
+   - **the weights take the form of convolutional filters that are randomly generated, so are the patterns to detect..and while training, filters are updated at each epoch to take on values that minimize the loss function.** CNN determines what kind of patterns it needs to detect based on the loss function. 
+   - So with CNN to emphasize, we won't specify the values of the filters or tell the CNN  what kind of patterns it needs to detect. THESE WILL BE LEARNED FROM THE DATA. 
 
 
 
