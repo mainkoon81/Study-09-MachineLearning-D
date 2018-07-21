@@ -96,17 +96,20 @@ To understand the modification of training code, we'll first need to understand 
 ## 2. [CNN]
 <img src="https://user-images.githubusercontent.com/31917400/42973712-1fe68142-8bac-11e8-8e0e-c94178e64919.jpg" />
 
-What's the convolutional layer?
+Q. What's the convolutional layer?
 <img src="https://user-images.githubusercontent.com/31917400/43023382-973db9e8-8c62-11e8-8557-aff4c924ce0d.jpg" />
 
  - Break the image up into smaller pieces.
-   - first select a width and height defining a convolution window
+   - first select a width and height defining a **convolutional window**.
    - then simply slide this window horizontally, vertically over the matrix of the pixels
-   - At each position, the window specifies a small piece within the image, and define a collection of pixels to which we connect a single hidden node.
+   - At each position, the window specifies a small piece within the image, and define a **collection of pixels** to which we connect a **single hidden node**.
 
-In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?   
- - We could represent the weights connecting the nodes by writing a numerical value on top of the arrows. 
- - Then in order to get the value of a node in the convolutional layer for this image input we operate as we did with MLP with multiplying the input nodes by their corresponding weights and summing up the result. When we do that, we get zero just as with 
+Q. In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?
+<img src="" />
+
+ - Let's represent the **weights** connecting the nodes by writing a numerical value on top of the arrows. 
+ - Then in order to get the **value of a node** in the convolutional layer for this image input we operate as we did with MLP with multiplying the input nodes by their corresponding weights and summing up the result. When we do that, we get zero just as with MLP (and there is a bias term, but we assume it's '0' and ignore it). We'll always add a **Relu** activation function to our convolutional layers, thus in this case, our zero stays zero. Now plug in the value for our **first node** in the convolutional layer. The values of all other nodes in the convolutional layer are caluculated in the same way.
+ - Now instead of representing **weights** on the top of the arrows, we decided to represent them in a grid, which we will call **filter**. 
 
 
 
