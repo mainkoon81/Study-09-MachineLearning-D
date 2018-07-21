@@ -112,7 +112,17 @@ Q. In detail, how a regional collection of input nodes influences the value of a
  - Now instead of representing **weights** on the top of the arrows, we decided to represent them in a grid, which we will call **filter**. It's size is always match the size of the **convolutional window**. 
  - Now the process of calculating the value of the nodes in the convolutional layer. In the second case, notice that the **positive values** in the filter perfectly correspond to the **largest values** in this region of the image. The converse is also true, the negative values in the filter corresponding to the smallest values in the image. In fact, since we rescaled the pixels in the image to lie b/w 0 and 1, '3' is the largest we can get for this filter. That is, the **pattern** in this region with a diagonal white stripe down the middle, is the **only arrangement of pixels** that will yield this maximal value '3'. We can see '3' also appears again, and it verifies the corresponding region in the image is identical.
  - In fact, when using CNN, we should **visualize our filters** which will tell us what kind of pattern our filters want to detect. Just like MLP, these weights will not be set in advance and will be learned by the network as the weights that minimize our loss function. Of course, if we want to detect more patterns, we need to use more filters. 
+<img src="https://user-images.githubusercontent.com/31917400/43036217-004ecf3e-8cf5-11e8-8f34-3cace52343a6.jpg" />
+
+Q. How to perform a convolution on a color images? 
+ - We still move a filter horizontally, vertically across the image. Only now the filter is itself 3-dimensional to have a value for each color channel at each horizontal and vertical lacation in the image array. Just like we think of the color image as a stack of three 2d matices, the same is true of our filter.
+ - Now to obtain the values of the nodes in the feature map corresponding to this filter, we do the same thing, but only now, our sum has over 3 times as many terms.
+<img src="https://user-images.githubusercontent.com/31917400/43036356-5354cc62-8cf8-11e8-9f57-72b767cf7dc8.jpg" />
  
+ - If we want to picture the case of a color image with multiple filters, we would define multiple 3d arrays (each as a stack of 2d arrays) as our **filters**. Then we can think about each of the **feature maps** in a convolutional layer along the same lines as an image channel and stack them to get a 3d array. Then, we can use this 3d array as input to still another convolutional layer to discover patterns within the patterns that we discovered in the first convolutional layer. We can then do this again to discover patterns within patterns within patterns....
+<img src="https://user-images.githubusercontent.com/31917400/43036346-0cb4d11c-8cf8-11e8-8f16-ed1c9cbe2d0f.jpg" />
+
+
 
 
 
