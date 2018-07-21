@@ -133,7 +133,7 @@ Both in MPL, CNN, the inference works the same way (weights, biases, loss, etc..
 So we can control the behavior of a convolutional layer by **specifying the no.of filters and the size of each filter**. 
  - To increase the **no.of nodes** in a convolutional layer, we could increase the no.of filters
  - To increase the **size of patterns**, we could increase the size of each filter.
- - there are more hyperparameters to tune.
+But in addition to this, there are more hyperparameters to tune.
    - **Stride** 
      - Stride refers the amount by which the filter slides (horizontally, vertically) over the image
      - One stride makes the one node in the one collection
