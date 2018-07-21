@@ -139,7 +139,7 @@ So we can control the behavior of a convolutional layer by **specifying the no.o
      - One stride makes the one node in the one collection
    - **Padding** 
      - what if...we go..'stride with 2, 3, ..'and the filter(or window) extends outside the image(because the width, height are off)?
-       - option_1: discarding..so no information about some regions of the image.`padding='valid'`
+       - option_1: discarding those pixels..so no information about some regions of the image.`padding='valid'`
        - option_2: padding them with '0'..so we can get all contribution from every regions of the image. `padding='same'`
 
 
