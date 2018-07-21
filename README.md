@@ -105,7 +105,7 @@ Q. What's the convolutional layer?
    - At each position, the window specifies a small piece within the image, and define a **collection of pixels** to which we connect a **single hidden node**.
 
 Q. In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?
-<img src="https://user-images.githubusercontent.com/31917400/43035654-b67a9824-8ceb-11e8-8624-482eb359dae8.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/43035798-69c0c060-8ced-11e8-9770-21201afb03e8.jpg" />
 
  - Let's represent the **weights** connecting the nodes by writing a numerical value on top of the arrows. 
  - Then in order to get the **value of a node** in the convolutional layer for this image input we operate as we did with MLP with multiplying the input nodes by their corresponding weights and summing up the result. When we do that, we get zero just as with MLP (and there is a bias term, but we assume it's '0' and ignore it). We'll always add a **Relu** activation function to our convolutional layers, thus in this case, our zero stays zero. Now plug in the value for our **first node** in the convolutional layer. The values of all other nodes in the convolutional layer are caluculated in the same way.
