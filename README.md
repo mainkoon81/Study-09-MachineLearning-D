@@ -105,11 +105,14 @@ Q. What's the convolutional layer?
    - At each position, the window specifies a small piece within the image, and define a **collection of pixels** to which we connect a **single hidden node**.
 
 Q. In detail, how a regional collection of input nodes influences the value of a node in a convolutional layer?
-<img src="" />
+<img src="https://user-images.githubusercontent.com/31917400/43035654-b67a9824-8ceb-11e8-8624-482eb359dae8.jpg" />
 
  - Let's represent the **weights** connecting the nodes by writing a numerical value on top of the arrows. 
  - Then in order to get the **value of a node** in the convolutional layer for this image input we operate as we did with MLP with multiplying the input nodes by their corresponding weights and summing up the result. When we do that, we get zero just as with MLP (and there is a bias term, but we assume it's '0' and ignore it). We'll always add a **Relu** activation function to our convolutional layers, thus in this case, our zero stays zero. Now plug in the value for our **first node** in the convolutional layer. The values of all other nodes in the convolutional layer are caluculated in the same way.
- - Now instead of representing **weights** on the top of the arrows, we decided to represent them in a grid, which we will call **filter**. 
+ - Now instead of representing **weights** on the top of the arrows, we decided to represent them in a grid, which we will call **filter**. It's size is always match the size of the **convolutional window**. 
+ - Now the process of calculating the value of the nodes in the convolutional layer. In the second case, notice that the **positive values** in the filter perfectly correspond to the **largest values** in this region of the image. The converse is also true, the negative values in the filter corresponding to the smallest values in the image. In fact, since we rescaled the pixels in the image to lie b/w 0 and 1, '3' is the largest we can get for this filter. That is, the **pattern** in this region with a diagonal white stripe down the middle, is the **only arrangement of pixels** that will yield this maximal value '3'. We can see '3' also appears again, and it verifies the corresponding region in the image is identical.
+ - In fact, when using CNN, we should **visualize our filters** which will tell us what kind of pattern our filters want to detect. Just like MLP, these weights will not be set in advance and will be learned by the network as the weights that minimize our loss function. Of course, if we want to detect more patterns, we need to use more filters. 
+ 
 
 
 
