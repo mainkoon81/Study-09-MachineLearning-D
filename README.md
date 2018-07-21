@@ -133,6 +133,7 @@ Both in MPL, CNN, the inference works the same way (weights, biases, loss, etc..
 So we can control the behavior of a convolutional layer by **specifying the no.of filters and the size of each filter**. 
  - To increase the **no.of nodes** in a convolutional layer, we could increase the no.of filters
  - To increase the **size of patterns**, we could increase the size of each filter.
+ 
 But in addition to this, there are more hyperparameters to tune.
    - **Stride** 
      - Stride refers the amount by which the filter slides (horizontally, vertically) over the image
@@ -141,12 +142,22 @@ But in addition to this, there are more hyperparameters to tune.
      - what if...we go..'stride with 2, 3, ..'and the filter(or window) extends outside the image(because the width, height are off)?
        - option_1: discarding those pixels..so no information about some regions of the image.`padding='valid'`
        - option_2: padding them with '0'..so we can get all contribution from every regions of the image. `padding='same'`
+This is aconvolution with '3 x 3' window and stride '1'.       
 <img src="https://user-images.githubusercontent.com/31917400/43039946-ef57f350-8d2f-11e8-8aff-bdbfcac7e8b9.gif" />
 
+To create a convolutional layer in Keras, you must first import the necessary module:
+```
+from keras.layers import Conv2D
+Conv2D(filters, kernel_size, strides, padding, activation='relu', input_shape)
+```
+ - `filters`: The number of filters.
+ - `kernel_size`: Number specifying both the height and width of the convolution window
+ - `strides`: The stride of the convolution. If you don't specify anything, strides is set to 1
+ - `padding`: One of 'valid' or 'same'. If you don't specify anything, padding is set to 'valid'
+ - `activation`: Typically **'relu'**. If you don't specify anything, no activation is applied. You are strongly encouraged to add a ReLU activation function to every convolutional layer in your networks.
+ - `input_shape`: When using your convolutional layer as the first layer (appearing after the input layer) in a model, you must provide an additional input_shape argument. Tuple specifying the height, width, and depth of the input.  Do not include the input_shape argument if the convolutional layer is not the first layer in your network.
 
-
-
-
+EX1> 
 
 
 
