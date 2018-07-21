@@ -142,10 +142,11 @@ But in addition to this, there are more hyperparameters to tune.
      - what if...we go..'stride with 2, 3, ..'and the filter(or window) extends outside the image(because the width, height are off)?
        - option_1: discarding those pixels..so no information about some regions of the image.`padding='valid'`
        - option_2: padding them with '0'..so we can get all contribution from every regions of the image. `padding='same'`
+
 This is aconvolution with '3 x 3' window and stride '1'.       
 <img src="https://user-images.githubusercontent.com/31917400/43039946-ef57f350-8d2f-11e8-8aff-bdbfcac7e8b9.gif" />
 
-To create a convolutional layer in Keras, you must first import the necessary module:
+To create a convolutional layer in Keras:
 ```
 from keras.layers import Conv2D
 Conv2D(filters, kernel_size, strides, padding, activation='relu', input_shape)
@@ -157,7 +158,18 @@ Conv2D(filters, kernel_size, strides, padding, activation='relu', input_shape)
  - `activation`: Typically **'relu'**. If you don't specify anything, no activation is applied. You are strongly encouraged to add a ReLU activation function to every convolutional layer in your networks.
  - `input_shape`: When using your convolutional layer as the first layer (appearing after the input layer) in a model, you must provide an additional input_shape argument. Tuple specifying the height, width, and depth of the input.  Do not include the input_shape argument if the convolutional layer is not the first layer in your network.
 
-EX1> 
+EX1> My input layer accepts grayscale images that are 200 by 200 pixels (corresponding to a 3D array with height 200, width 200, and depth 1). Then, say I'd like the next layer to be a convolutional layer with 16 filters, each with a width and height of 2. When performing the convolution, I'd like the filter to jump two pixels at a time. I also don't want the filter to extend outside of the image boundaries; in other words, I don't want to pad the image with zeros. Then, to construct this convolutional layer.... 
+```
+Conv2D(filters=16, kernel_size=2, strides=2, activation='relu', input_shape=(200, 200, 1))
+```
+EX2> I'd like the next layer in my CNN to be a convolutional layer that takes the layer constructed in Example 1 as input. Say I'd like my new layer to have 32 filters, each with a height and width of 3. When performing the convolution, I'd like the filter to jump 1 pixel at a time. I want the convolutional layer to see all regions of the previous layer, and so I don't mind if the filter hangs over the edge of the previous layer when it's performing the convolution. Then, to construct this convolutional layer....
+```
+Conv2D(filters=32, kernel_size=3, padding='same', activation='relu')
+```
+EX3> There are 64 filters, each with a size of 2x2, and the layer has a ReLU activation function. The other arguments in the layer use the default values, so the convolution uses a stride of 1, and the padding has been set to 'valid'.
+```
+Conv2D(64, (2,2), activation='relu')
+```
 
 
 
