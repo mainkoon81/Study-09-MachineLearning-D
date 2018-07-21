@@ -130,7 +130,17 @@ Both in MPL, CNN, the inference works the same way (weights, biases, loss, etc..
    - **the weights take the form of convolutional filters that are randomly generated, so are the patterns to detect..and while training, filters are updated at each epoch to take on values that minimize the loss function.** CNN determines what kind of patterns it needs to detect based on the loss function. 
    - So with CNN to emphasize, we won't specify the values of the filters or tell the CNN  what kind of patterns it needs to detect. THESE WILL BE LEARNED FROM THE DATA. 
 
-
+So we can control the behavior of a convolutional layer by **specifying the no.of filters and the size of each filter**. 
+ - To increase the **no.of nodes** in a convolutional layer, we could increase the no.of filters
+ - To increase the **size of patterns**, we could increase the size of each filter.
+ - there are more hyperparameters to tune.
+   - **Stride** 
+     - Stride refers the amount by which the filter slides (horizontally, vertically) over the image
+     - One stride makes the one node in the one collection
+   - **Padding** 
+     - what if...we go..'stride with 2, 3, ..'and the filter(or window) extends outside the image(because the width, height are off)?
+       - option_1: discarding..so no information about some regions of the image.`padding='valid'`
+       - option_2: padding them with '0'..so we can get all contribution from every regions of the image. `padding='same'`
 
 
 
