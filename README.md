@@ -174,18 +174,25 @@ Conv2D(64, (2,2), activation='relu')
 <img src="https://user-images.githubusercontent.com/31917400/43049622-95a5d192-8df2-11e8-8891-effbfcfd3de3.jpg" />
 
 ## [B] What's the pooling layer?
-It takes our convolutional layers as input. 
+It takes our convolutional layers as input and reduces their dimensionality.
  - A convolutional layer is a stack of **feature_maps** where we have one feature map for each filter. A complex dataset will require a large number of filters, each responsible for finding a pattern in the image, which means the dimensionality of our convolutional layers can get large, thus it requires more parameters...which can lead to overfitting. Thus, we need a method for **reducing this dimensionality**. This is where our pooling layer comes in.
  - 2 types of pooling 
    - **Max_pooling_layer**: It takes a stack of **feature_maps** as input. The **value of the corresponding node** in the max_pooling_layer is calculated by just taking the **maximum of the nodes(pixels)** contained in the window. From this process, the output is a stack with the same number of feature_maps, but each feature_map is reduced in width and height. 
    - **Global_AVG_pooling_layer**: It takes a stack of **feature_maps** and computes the AVG value of the nodes for each map in the stack(so no need to use windows or strides). The final output is a stack of feature_maps where each is reduced to a single value. So this means it takes a **3d-array** and turns it into a **vector**. 
 <img src="https://user-images.githubusercontent.com/31917400/43050282-2bc089f0-8dfe-11e8-9a92-a678875cd4c5.jpg" />
 
+Create a max pooling layer in Keras
+```
+from keras.layers import MaxPooling2D
+MaxPooling2D(pool_size, strides, padding)
+```
+ - `pool_size`: Number specifying the height and width of the pooling window. It is possible to represent both pool_size and strides as either a number or a tuple. 
 
-
-
-
-
+EX1> I'd like to reduce the dimensionality of a convolutional layer by following it with a **max pooling layer**. Say the convolutional layer has size (100, 100, 15), and I'd like the max pooling layer to have size (50, 50, 15). I can do this by using a 2x2 window in my max pooling layer, with a stride of 2...
+```
+MaxPooling2D(pool_size=2, strides=2)
+```
+<img src="https://user-images.githubusercontent.com/31917400/43050398-db15a592-8dff-11e8-9c11-e19fc045bd6c.jpg" />
 
 
 
