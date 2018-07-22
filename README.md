@@ -96,7 +96,7 @@ To understand the modification of training code, we'll first need to understand 
 ## 2. [CNN]
 <img src="https://user-images.githubusercontent.com/31917400/42973712-1fe68142-8bac-11e8-8e0e-c94178e64919.jpg" />
 
-## Q. What's the convolutional layer?
+## [A] What's the convolutional layer?
 <img src="https://user-images.githubusercontent.com/31917400/43023382-973db9e8-8c62-11e8-8557-aff4c924ce0d.jpg" />
 
  - Break the image up into smaller pieces.
@@ -172,6 +172,42 @@ EX3> There are 64 filters, each with a size of 2x2, and the layer has a ReLU act
 Conv2D(64, (2,2), activation='relu')
 ```
 <img src="https://user-images.githubusercontent.com/31917400/43049622-95a5d192-8df2-11e8-8891-effbfcfd3de3.jpg" />
+
+## [B] What's the pooling layer?
+It takes our convolutional layers as input. 
+ - A convolutional layer is a stack of **feature_maps** where we have one feature map for each filter. A complex dataset will require a large number of filters, each responsible for finding a pattern in the image, which means the dimensionality of our convolutional layers can get large, thus it requires more parameters...which can lead to overfitting. Thus, we need a method for **reducing this dimensionality**. This is where our pooling layer comes in.
+ - 2 types of pooling 
+   - **Max_pooling_layer**: It takes a stack of **feature_maps** as input. The **value of the corresponding node** in the max_pooling_layer is calculated by just taking the **maximum of the nodes(pixels)** contained in the window. From this process, the output is a stack with the same number of feature_maps, but each feature_map is reduced in width and height. 
+   - **Global_AVG_pooling_layer**: It takes a stack of **feature_maps** and computes the AVG value of the nodes for each map in the stack(so no need to use windows or strides). The final output is a stack of feature_maps where each is reduced to a single value. So this means it takes a **3d-array** and turns it into a **vector**. 
+<img src="https://user-images.githubusercontent.com/31917400/43050282-2bc089f0-8dfe-11e8-9a92-a678875cd4c5.jpg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
