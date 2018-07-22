@@ -170,7 +170,7 @@ EX3> There are 64 filters, each with a size of 2x2, and the layer has a ReLU act
 ```
 Conv2D(64, (2,2), activation='relu')
 ```
-
+It is possible to represent both `kernel_size` and `strides` as either a number or a tuple.
 
 
 
