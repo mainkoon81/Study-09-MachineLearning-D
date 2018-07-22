@@ -167,11 +167,12 @@ EX2> I'd like the next layer in my CNN to be a convolutional layer that takes th
 ```
 Conv2D(filters=32, kernel_size=3, padding='same', activation='relu')
 ```
-EX3> There are 64 filters, each with a size of 2x2, and the layer has a ReLU activation function. The other arguments in the layer use the default values, so the convolution uses a stride of 1, and the padding has been set to 'valid'.
+EX3> There are 64 filters, each with a size of 2x2, and the layer has a ReLU activation function. The other arguments in the layer use the default values, so the convolution uses a stride of 1, and the padding has been set to 'valid'. It is possible to represent both `kernel_size` and `strides` as either a number or a tuple.
 ```
 Conv2D(64, (2,2), activation='relu')
 ```
-It is possible to represent both `kernel_size` and `strides` as either a number or a tuple.
+<img src="https://user-images.githubusercontent.com/31917400/43049622-95a5d192-8df2-11e8-8891-effbfcfd3de3.jpg" />
+
 
 
 
