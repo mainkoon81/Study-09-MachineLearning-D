@@ -143,8 +143,9 @@ But in addition to this, there are more hyperparameters to tune.
        - option_1: discarding those pixels..so no information about some regions of the image.`padding='valid'`
        - option_2: padding them with '0'..so we can get all contribution from every regions of the image. `padding='same'`
 
-This is aconvolution with '3 x 3' window and stride '1'.       
+This is a feature extraction using a convolution with '3 x 3' window and stride '1'.       
 <img src="https://user-images.githubusercontent.com/31917400/43039946-ef57f350-8d2f-11e8-8aff-bdbfcac7e8b9.gif" />
+<img src="https://user-images.githubusercontent.com/31917400/43048908-59f6843a-8de7-11e8-94ad-3f872c9b4a0c.gif" />
 
 To create a convolutional layer in Keras:
 ```
