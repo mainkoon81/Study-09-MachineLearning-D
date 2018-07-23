@@ -224,6 +224,7 @@ model.add(Dense(500, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 ```
 The network begins with a sequence of three convolutional layers(to detect regional patterns), followed by max pooling layers. These first six layers are designed to take the input array of image pixels and **convert it to an array where all of the spatial information has been squeezed out**, and only information encoding the content of the image remains. The array is then flattened to a **vector** in the seventh layer of the CNN. It is followed by two dense(fully-connected) layers designed to **further elucidate the content of the image**. The final layer has one entry for each object class in the dataset, and has a softmax activation function, so that it returns probabilities.
+<img src="https://user-images.githubusercontent.com/31917400/43073733-87bc60ca-8e72-11e8-9c29-9653fb47e541.jpg" />
 
 > Things to Remember
  - Always add a ReLU activation function to the Conv2D layers in your CNN. With the exception of the final layer in the network, Dense layers should also have a ReLU activation function.
