@@ -230,8 +230,26 @@ The network begins with a sequence of three convolutional layers(to detect regio
  - Always add a ReLU activation function to the Conv2D layers in your CNN. With the exception of the final layer in the network, Dense layers should also have a ReLU activation function.
  - When constructing a network for classification, the final layer in the network should be a Dense layer with a softmax activation function. The **number of nodes** in the final layer should equal the **total number of classes** in the dataset.
 
+So now we just developed the **classification model** that can recognize if the given image presents 'bird','cat','car',...etc. But we have to deal with lots of irrelavant information in the image such as size, angle, location...etc. So we want our algorithm to learn **invariant representation** of of the image!
+ - Let it determine not based on size: **scale_invariance**
+ - Let it determine not based on angle: **rotation_invariance**
+ - Let it determine not based on the position: **translation_invariance**
 
+### Data Augmentation
+CNN has some built-in translation invariance. 
+ - See how we calculate **Max-pooling layer**. When we move the window, the value of the max pooling node would be the same as long as the maximum value stays within the window. The effect of applying many max-pooling layers in a sequence, each following a convolutional layer, is that we could translate the object quite far to the left, to the top of the image, to the bottom of the image and still our model can make sense of it all. Transforming an object?'s scale, rotation, position in the image has a huge effect on the pixel values.
+ - Then how our computer can conceive the differences in the image? There is a technique that makes our algorithm more statistically invariant. 
+   - If we want our CNN to be **rotation_invariant**, we add some images to our training set created by doing random rotations on our training images.
+   - If we want our CNN to be **translation_invariant**, we add some images created by doing random translation of our training images.
+<img src="https://user-images.githubusercontent.com/31917400/43107734-5703540c-8ed6-11e8-899d-d4797f8cedef.jpg" />
 
+When we do this, we see that we expand the training set by **augmenting the data**, and this also helps to avoid overfitting because our model is seeing many new images.     
+```
+from keras.preprocessing.image import ImageDataGenerator
+
+datagen_train = ImageDataGenerator(width_shift_range=?, height_shift_range=?, horizontal_flip=True)
+datagen_train.fit(x_train)
+```
 
 
 
