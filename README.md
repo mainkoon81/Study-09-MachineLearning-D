@@ -189,13 +189,45 @@ MaxPooling2D(pool_size, strides, padding)
  - `pool_size`: Number specifying the height and width of the pooling window. It is possible to represent both pool_size and strides as either a number or a tuple. 
 
 EX1> I'd like to reduce the dimensionality of a convolutional layer by following it with a **max pooling layer**. Say the convolutional layer has size (100, 100, 15), and I'd like the max pooling layer to have size (50, 50, 15). I can do this by using a 2x2 window in my max pooling layer, with a stride of 2...
-```
-MaxPooling2D(pool_size=2, strides=2)
-```
 <img src="https://user-images.githubusercontent.com/31917400/43050398-db15a592-8dff-11e8-9c11-e19fc045bd6c.jpg" />
 
+## [C] CNN Architecture
+ - Collect millions of images and pick an image_size and resize all of our images to that same size.
+ - As known, any image is interpreted by the computer as a 3d_array(coz Color gives depth). We can say our input array will always be much taller(height) and wider(width) than it is deep(color). CNN architecture is designed with the goal of taking that array and making it deeper than it is taller and wide. 
+ - Convolutional layers make the array deeper as it passes through the network
+ - Each of the convolutional layers requires to specify a number of hyperparameters.
+   - kernal_size: from **2x2** to **5x5**
+   - No.of filters: It controls the depth of the convolutional layer since the convolutional layer has one activation function for each filter. (no.of filters = depth = no.of activation_func)
+   - Often, we will have the no.of filters **increase** in the sequence.   
+ - Pooling layers decrease the spatial dimensions.
+   - Here, the convolutional layers expand the depth of the arrays from 3 to 16 to 32 to 64 while our max_pooling layers decrease the dimensions from 32 to 16 to 8 to 4. 
 
+This sequence of layers discovers the spatial patterns contained in the image. It gradually takes the spatial data and converts the array to a representation that encodes the **various contents of the image** where all spatial information is eventually lost (so it's not relevant which pixel is next to what other pixels). 
 
+Once we get to the final representation, we can flatten the array to a vector and feed it to one or more fully connected MLP to determine what object is contained in the image. so it has a potential to classify objects more accurately.  
+<img src="https://user-images.githubusercontent.com/31917400/43073573-0c0f0478-8e72-11e8-9a45-ac0e82a87505.jpg" />
+
+EX2> 
+```
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+model = Sequential()
+model.add(Conv2D(filters=16, kernel_size=2, padding='same', activation='relu', input_shape=(32, 32, 3)))
+model.add(MaxPooling2D(pool_size=2))
+model.add(Conv2D(filters=32, kernel_size=2, padding='same', activation='relu'))
+model.add(MaxPooling2D(pool_size=2))
+model.add(Conv2D(filters=64, kernel_size=2, padding='same', activation='relu'))
+model.add(MaxPooling2D(pool_size=2))
+
+model.add(Flatten())
+model.add(Dense(500, activation='relu'))
+model.add(Dense(10, activation='softmax'))
+```
+The network begins with a sequence of three convolutional layers(to detect regional patterns), followed by max pooling layers. These first six layers are designed to take the input array of image pixels and **convert it to an array where all of the spatial information has been squeezed out**, and only information encoding the content of the image remains. The array is then flattened to a **vector** in the seventh layer of the CNN. It is followed by two dense(fully-connected) layers designed to **further elucidate the content of the image**. The final layer has one entry for each object class in the dataset, and has a softmax activation function, so that it returns probabilities.
+
+> Things to Remember
+ - Always add a ReLU activation function to the Conv2D layers in your CNN. With the exception of the final layer in the network, Dense layers should also have a ReLU activation function.
+ - When constructing a network for classification, the final layer in the network should be a Dense layer with a softmax activation function. The **number of nodes** in the final layer should equal the **total number of classes** in the dataset.
 
 
 
