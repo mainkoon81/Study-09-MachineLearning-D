@@ -251,6 +251,8 @@ datagen_train = ImageDataGenerator(width_shift_range=?, height_shift_range=?, ho
 datagen_train.fit(x_train)
 ```
 ### Transfer Learning
+How to adapt expert's CNN architecture that have already learned so much about how to find the patterns in image data toward our own classification task? Do they have overlaps? 
+
 Transfer learning involves taking a pre-trained neural network and adapting the neural network to a new, different dataset. The approach for using transfer learning will be different. There are four main cases:
  - new dataset is **small**, new data is **similar** to original training data
  - new dataset is **small**, new data is **different** from original training data
