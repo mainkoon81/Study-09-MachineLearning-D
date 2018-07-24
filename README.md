@@ -260,7 +260,7 @@ Transfer learning involves taking a pre-trained neural network and adapting the 
 Of course, the dividing line between a large dataset and small dataset is somewhat subjective. Overfitting is a concern when using transfer learning with a small dataset. 
 
 To explain how each situation works, we will start with a generic pre-trained convolutional neural network and explain how to adjust the network for each case. Our example network contains three convolutional layers and three fully connected layers:
-<img src="https://user-images.githubusercontent.com/31917400/43107734-5703540c-8ed6-11e8-899d-d4797f8cedef.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/43163699-c6c43b16-8f86-11e8-922e-aa004bb24284.png" />
 
 1> Small + Similar
  - slice off the end of the neural network
