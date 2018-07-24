@@ -250,11 +250,27 @@ from keras.preprocessing.image import ImageDataGenerator
 datagen_train = ImageDataGenerator(width_shift_range=?, height_shift_range=?, horizontal_flip=True)
 datagen_train.fit(x_train)
 ```
+### Transfer Learning
+Transfer learning involves taking a pre-trained neural network and adapting the neural network to a new, different dataset. The approach for using transfer learning will be different. There are four main cases:
+ - new dataset is **small**, new data is **similar** to original training data
+ - new dataset is **small**, new data is **different** from original training data
+ - new dataset is **large**, new data is **similar** to original training data
+ - new dataset is **large**, new data is **different** from original training data
 
+Of course, the dividing line between a large dataset and small dataset is somewhat subjective. Overfitting is a concern when using transfer learning with a small dataset. 
 
+To explain how each situation works, we will start with a generic pre-trained convolutional neural network and explain how to adjust the network for each case. Our example network contains three convolutional layers and three fully connected layers:
+<img src="https://user-images.githubusercontent.com/31917400/43107734-5703540c-8ed6-11e8-899d-d4797f8cedef.jpg" />
 
+1> Small + Similar
+ - slice off the end of the neural network
+ - add a new fully connected layer that matches the number of classes in the new data set
+ - randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network
+ - train the network to update the weights of the new fully connected layer
 
+To avoid overfitting on the small data set, the weights of the original network will be held constant rather than re-training the weights.
 
+Since the datasets are similar, images from each data set will have similar higher level features. Therefore most or all of the pre-trained neural network layers already contain relevant information about the new dataset and should be kept.
 
 
 
