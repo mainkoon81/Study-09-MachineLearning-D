@@ -267,10 +267,12 @@ To explain how each situation works, we will start with a generic pre-trained co
  - add a new fully connected layer that matches the number of classes in the new data set
  - randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network
  - train the network to update the weights of the new fully connected layer
+<img src="https://user-images.githubusercontent.com/31917400/43164246-95b8b6e4-8f88-11e8-8761-1d79ebc37001.jpg" />
 
-To avoid overfitting on the small data set, the weights of the original network will be held constant rather than re-training the weights.
-
-Since the datasets are similar, images from each data set will have similar higher level features. Therefore most or all of the pre-trained neural network layers already contain relevant information about the new dataset and should be kept.
+> because Small: 
+To avoid overfitting on the small dataset, the weights of the original network will be held constant rather than re-training the weights.
+> because Similar:
+Since the datasets are similar, images from each dataset will have similar higher level features. Therefore most or all of the pre-trained neural network layers already contain relevant information about the new dataset and should be kept.
 
 
 
