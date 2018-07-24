@@ -262,25 +262,55 @@ Of course, the dividing line between a large dataset and small dataset is somewh
 To explain how each situation works, we will start with a generic pre-trained convolutional neural network and explain how to adjust the network for each case. Our example network contains three convolutional layers and three fully connected layers:
 <img src="https://user-images.githubusercontent.com/31917400/43163989-d124ee42-8f87-11e8-86ce-421d541a0acb.png" />
 
-1> Small + Similar
+#### 1> Small + Similar
  - slice off the end of the neural network
  - add a new fully connected layer that matches the number of classes in the new data set
  - randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network
  - train the network to update the weights of the new fully connected layer
 <img src="https://user-images.githubusercontent.com/31917400/43164246-95b8b6e4-8f88-11e8-8761-1d79ebc37001.jpg" />
 
-> because Small: 
+> **because Small**: 
 To avoid overfitting on the small dataset, the weights of the original network will be held constant rather than re-training the weights.
-> because Similar:
+
+> **because Similar**:
 Since the datasets are similar, images from each dataset will have similar higher level features. Therefore most or all of the pre-trained neural network layers already contain relevant information about the new dataset and should be kept.
 
+#### 2> Small + Different
+ - slice off most of the pre-trained layers near the beginning of the network
+ - add to the remaining pre-trained layers a new fully connected layer that matches the number of classes in the new data set
+ - randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network
+ - train the network to update the weights of the new fully connected layer
+<img src="https://user-images.githubusercontent.com/31917400/43164681-ae2136ce-8f89-11e8-8592-d3fb49b0939b.jpg" />
 
+> **because Small**:
+overfitting is still a concern. To combat overfitting, the weights of the original neural network will be held constant, like in the first case.
 
+> **because Different**: 
+But the original training set and the new dataset do not share higher level features. In this case, the new network will only use the layers containing lower level features.
 
+#### 3> Large + Similar
+ - remove the last fully connected layer and replace with a layer matching the number of classes in the new data set
+ - randomly initialize the weights in the new fully connected layer
+ - initialize the rest of the weights using the pre-trained weights
+ - re-train the entire neural network
+<img src="https://user-images.githubusercontent.com/31917400/43164947-87de6ad0-8f8a-11e8-89a9-796d6aead58c.jpg" />
 
+> **because Large**:
+Overfitting is not as much of a concern when training on a large data set; therefore, you can re-train all of the weights.
 
+> **because Similar**:
+ the original training set and the new data set share higher level features thus, the entire neural network is used as well.
 
+#### 4> Large + Different
+ - remove the last fully connected layer and replace with a layer matching the number of classes in the new data set
+ - retrain the network from scratch with randomly initialized weights
+ - alternatively, you could just use the same strategy as the "large and similar" data case
+<img src="https://user-images.githubusercontent.com/31917400/43165261-63490102-8f8b-11e8-8839-228b72a1bb91.jpg" />
 
+> **because Large and Different**:
+Even though the dataset is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a **large, similar dataset**.
+
+> If using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.
 
 
 
