@@ -314,6 +314,8 @@ Even though the dataset is different from the training data, initializing the we
 
 > If using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.
 
+> Example from VGG(Visual Geometry Group of Oxford)
+<img src="https://user-images.githubusercontent.com/31917400/43167247-ee5cd3c2-8f90-11e8-9c21-8677291f8687.jpg" />
 
 
 
