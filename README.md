@@ -157,7 +157,7 @@ Conv2D(filters, kernel_size, strides, padding, activation='relu', input_shape)
  - `strides`: The stride of the convolution. If you don't specify anything, strides is set to 1
  - `padding`: One of 'valid' or 'same'. If you don't specify anything, padding is set to 'valid'
  - `activation`: Typically **'relu'**. If you don't specify anything, no activation is applied. You are strongly encouraged to add a ReLU activation function to every convolutional layer in your networks.
- - `input_shape`: When using your convolutional layer as the first layer (appearing after the input layer) in a model, you must provide an additional input_shape argument. Tuple specifying the height, width, and depth of the input.  Do not include the input_shape argument if the convolutional layer is not the first layer in your network.
+ - `input_shape`: When using your convolutional layer as the first layer (appearing after the input layer) in a model, you must provide an additional input_shape argument. Tuple specifying the height, width, and depth of the input. **Do not include the input_shape argument if the convolutional layer is not the first layer in your network.**
 
 EX1> My input layer accepts grayscale images that are 200 by 200 pixels (corresponding to a 3D array with height 200, width 200, and depth 1). Then, say I'd like the next layer to be a convolutional layer with 16 filters, each with a width and height of 2. When performing the convolution, I'd like the filter to jump two pixels at a time. I also don't want the filter to extend outside of the image boundaries; in other words, I don't want to pad the image with zeros. Then, to construct this convolutional layer.... 
 ```
