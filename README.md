@@ -311,7 +311,7 @@ Overfitting is not as much of a concern when training on a large data set; there
 > **because Large and Different**:
 Even though the dataset is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a **large, similar dataset**.
 
-> If using the pre-trained network as a starting point does not produce a successful model, another option is to **randomly initialize the convolutional neural network weights and train the network from scratch*~8.
+> If using the pre-trained network as a starting point does not produce a successful model, another option is to **randomly initialize the convolutional neural network weights and train the network from scratch**.
 
 > Example from VGG(Visual Geometry Group of Oxford)
 <img src="https://user-images.githubusercontent.com/31917400/43167247-ee5cd3c2-8f90-11e8-9c21-8677291f8687.jpg" />
